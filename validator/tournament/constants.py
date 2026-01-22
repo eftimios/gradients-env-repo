@@ -1,0 +1,83 @@
+MAX_TRAINING_ATTEMPTS = 2
+
+# Smart prioritization thresholds for task fetching
+PENDING_QUEUE_THRESHOLD_PER_TYPE = 8  # Fetch tournament tasks when pending per type < this
+PENDING_QUEUE_THRESHOLD_FOR_BENCHMARK = 5  # Fetch benchmark tasks when pending < this
+
+# Orchestrator cycle intervals (in seconds)
+FETCH_TASKS_CYCLE_INTERVAL = 15 * 60  # 15 minutes
+PROCESS_PENDING_TASKS_CYCLE_INTERVAL = 15 * 60  # 15 minutes
+MONITOR_TRAINING_TASKS_CYCLE_INTERVAL = 15 * 60  # 15 minutes
+MOVE_COMPLETED_TASKS_CYCLE_INTERVAL = 15 * 60  # 15 minutes
+PERIODIC_GPU_AVAILABILITY_UPDATE_INTERVAL = 15 * 60  # 15 minutes
+
+TOURNAMENT_PENDING_CYCLE_INTERVAL = 15 * 60
+TOURNAMENT_ACTIVE_CYCLE_INTERVAL = 15 * 60
+TOURNAMENT_PENDING_ROUND_CYCLE_INTERVAL = 15 * 60
+
+
+# Retry intervals (in seconds)
+TRAINING_START_RETRY_INTERVAL = 1 * 60  # 15 minutes
+
+# Dstack orchestrator retry settings
+DSTACK_RETRY_DELAY_MINUTES = 30
+DSTACK_MAX_RETRIES = 3
+
+# Dstack regions
+DSTACK_IMAGE_REGIONS = ["CA-MTL-3", "CA-MTL-1", "AP-JP-1", "US-KS-2", "US-GA-2", "US-CA-2", "EUR-IS-1", "US-MO-1"]
+DSTACK_TEXT_REGIONS = ["CA-MTL-1", "AP-JP-1", "US-KS-2", "US-GA-2", "US-CA-2", "EUR-IS-1", "US-MO-1"]
+
+# Trainer requests
+TRAINER_HTTP_TIMEOUT = 30.0  # seconds
+EXPECTED_TRAINING_START_MESSAGE = "Started Training!"
+NO_RETRY_RESULT = "No Retry"
+
+
+# Tournament structure constants
+MAX_NUMBER_OF_MINERS_FOR_KNOCKOUT_ROUND = 14
+EXPECTED_GROUP_SIZE = 32
+MIN_GROUP_SIZE = 20
+MIN_ENVIRONMENT_GROUP_SIZE = 5
+
+
+TOURNAMENT_PARTICIPANT_PING_BATCH_SIZE = 50
+
+# Tournament task allocation
+TEXT_TASKS_PER_GROUP = 1
+IMAGE_TASKS_PER_GROUP = 1
+ENVIRONMENT_TASKS_PER_GROUP = 1
+
+# Final round task counts
+FINAL_ROUND_IMAGE_TASKS = 6
+FINAL_ROUND_IMAGE_QWEN_ZIMAGE_TASKS = 3
+FINAL_ROUND_TEXT_TASKS = 6
+
+PROBABILITY_OF_A_BIG_TEXT_MODEL = 0.2
+
+# Knockout round task counts
+KNOCKOUT_PAIR_TASKS = 1
+
+# Model size constants (in billions)
+DEFAULT_MODEL_MIN_SIZE_B = 1
+DEFAULT_MODEL_MAX_SIZE_B = 10
+MODEL_SIZE_RANGE_MULTIPLIER_MIN = 0.8
+MODEL_SIZE_RANGE_MULTIPLIER_MAX = 1.2
+
+# Model parameter conversion
+MODEL_PARAMS_TO_BILLIONS = 1e9
+
+# Progressive championship threshold constants
+EXPONENTIAL_BASE_THRESHOLD = 0.10  # Starting threshold for new champions
+EXPONENTIAL_DECAY_RATE = 0.8  # Decay factor per consecutive win
+EXPONENTIAL_MIN_THRESHOLD = 0.03  # Minimum threshold floor
+
+# Obfuscation detection constants
+OBFUSCATION_DETECTION_PATH = "./validator/obfuscation_detection/anti_obfuscation"
+
+# Round Sanity Check
+PERCENTAGE_OF_TASKS_SHOULD_BE_SUCCESS = 0.5
+
+# Tournament participation fees (in RAO)
+TOURNAMENT_TEXT_PARTICIPATION_FEE_RAO = 200_000_000  # 0.2 TAO = 200,000,000 RAO
+TOURNAMENT_ENVIRONMENT_PARTICIPATION_FEE_RAO = 250_000_000  # 0.25 TAO = 250,000,000 RAO
+TOURNAMENT_IMAGE_PARTICIPATION_FEE_RAO = 150_000_000  # 0.15 TAO = 150,000,000 RAO
