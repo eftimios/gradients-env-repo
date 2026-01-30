@@ -249,3 +249,4 @@ def goofspiel_rollout_reward_func(completions, **kwargs):
     """Reward function for Goofspiel that extracts rewards from rollout kwargs."""
     rewards = kwargs.get("env_rewards") if kwargs else None
     return [float(r) for r in rewards] if rewards is not None else [0.0] * len(completions)
+

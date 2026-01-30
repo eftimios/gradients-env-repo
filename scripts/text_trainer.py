@@ -121,6 +121,12 @@ def create_config(task_id, model, dataset, dataset_type, file_format, output_dir
             config["trl"]["rollout_func"] = "alfworld.alfworld_rollout_first_prompt_and_completion"
             config["trl"]["reward_funcs"] = ["alfworld.alfworld_rollout_reward_func"]
             config["trl"]["reward_weights"] = [1.0]
+        elif dataset_type.environment_name == "goofspiel":
+            config["trl"]["rollout_func"] = "goofspiel.goofspiel_rollout_full_episode"
+            config["trl"]["reward_funcs"] = ["goofspiel.goofspiel_rollout_reward_func"]
+            config["trl"]["reward_weights"] = [1.0]
+        else:
+            raise ValueError(f"Unsupported environment: {dataset_type.environment_name}")
 
     if file_format != FileFormat.HF.value:
         for ds in config["datasets"]:

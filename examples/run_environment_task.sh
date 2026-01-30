@@ -4,7 +4,7 @@ TASK_ID="1"
 MODEL="Qwen/Qwen2.5-3B-Instruct"
 DATASET="https://huggingface.co/datasets/TuringEnterprises/Turing-Open-Reasoning/resolve/main/Computational_STEM_QA_Dataset.json?download=true"
 DATASET_TYPE='{
-  "environment_name": "alfworld"
+  "environment_name": "goofspiel"
 }'
 FILE_FORMAT="s3"
 HOURS_TO_COMPLETE=12
@@ -13,7 +13,7 @@ HOURS_TO_COMPLETE=12
 HUGGINGFACE_TOKEN="Your Huggingface Token"
 WANDB_TOKEN=""
 HUGGINGFACE_USERNAME="Your Huggingface Username"
-EXPECTED_REPO_NAME="environment_test"
+EXPECTED_REPO_NAME="goofspiel_test"
 LOCAL_FOLDER="/app/checkpoints/$TASK_ID/$EXPECTED_REPO_NAME"
 DOCKER_BUILDKIT=1
 
@@ -44,11 +44,12 @@ docker run --rm \
 
 docker network create tmp_network
 
+# Use Goofspiel environment server
 docker run -d \
   --name environment-server \
   --network tmp_network \
   -p 10000:8000 \
-  affinefoundation/agentgym:alfworld
+  diagonalge/openspiel:latest
 
 docker run --rm --gpus all \
   --security-opt=no-new-privileges \
