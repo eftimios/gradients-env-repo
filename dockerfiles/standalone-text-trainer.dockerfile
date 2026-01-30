@@ -6,12 +6,18 @@ ENV UV_SYSTEM_PYTHON=1 \
 
 # Core deps
 RUN uv pip install packaging setuptools wheel awscli pydantic \
-      mlflow huggingface_hub aiohttp requests toml fastapi \
+      huggingface_hub aiohttp requests toml fastapi \
       uvicorn httpx loguru python-dotenv scipy numpy datasets \
       tenacity minio pandas tiktoken sentencepiece peft Pillow \
       PyYAML textstat langcheck detoxify \
       git+https://github.com/rayonlabs/fiber@2.4.0 \
       git+https://github.com/huggingface/trl@40dc4bd993f699c8c36a5bc0cf31511b8866aadf
+
+# Install protobuf 3.20.3 first, then mlflow 2.3.0 which is compatible with it
+RUN uv pip install protobuf==3.20.3 mlflow==2.3.0
+
+# Install newer pyarrow to fix is_binary_view AttributeError
+RUN uv pip install --force-reinstall pyarrow>=14.0.0
 
 RUN uv pip install --no-build-isolation vllm==0.12.0
 

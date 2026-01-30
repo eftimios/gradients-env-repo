@@ -75,6 +75,9 @@ wandb_mode:
 wandb_run: Gradients-Rollout
 wandb_runid: default
 
+use_mlflow: false
+enable_profiling: false
+
 eval_table_size:
 max_steps: 125
 save_steps: 20

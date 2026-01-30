@@ -85,7 +85,7 @@ def create_config(task_id, model, dataset, dataset_type, file_format, output_dir
     config["datasets"] = [create_dataset_entry(dataset, dataset_type, FileFormat(file_format))]
     model_path = str(train_paths.get_text_base_model_path(model))
     config["base_model"] = model_path
-    config["mlflow_experiment_name"] = dataset
+    config["use_mlflow"] = False
     os.makedirs(output_dir, exist_ok=True)
     config["output_dir"] = str(output_dir)
     config["trl"]["vllm_mode"] = "colocate"
